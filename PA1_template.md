@@ -37,7 +37,7 @@ activitytotal <- data.frame(day.number=1:61,totalactivity=aggregateactivity)
 hist(activitytotal$totalactivity,col="green", breaks =15 ,xlab="Steps",ylab="Frequency",main="Total Steps Histogram")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+![plot of chunk histogram](figure/histogram-1.png)
 
 ## Step 3  
 ### Mean and median of total steps taken everyday
@@ -71,7 +71,7 @@ median(activitytotal$totalactivity,na.rm=T)
  xlab("Interval") + ylab("Steps")
  ```
  
- ![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+ ![plot of chunk plot](figure/plot-1.png)
 
 
 
@@ -80,26 +80,6 @@ median(activitytotal$totalactivity,na.rm=T)
  
  ```r
  library(dplyr)
- ```
- 
- ```
- ## 
- ## Attaching package: 'dplyr'
- ```
- 
- ```
- ## The following objects are masked from 'package:stats':
- ## 
- ##     filter, lag
- ```
- 
- ```
- ## The following objects are masked from 'package:base':
- ## 
- ##     intersect, setdiff, setequal, union
- ```
- 
- ```r
  intervalactivity %>% select(interval,steps) %>% filter(steps ==max(intervalactivity$steps))
  ```
  
@@ -152,7 +132,7 @@ aggregatecompleteactivity <- tapply(completeactivity$steps,completeactivity$date
 hist(aggregatecompleteactivity,col="green",breaks=20,xlab="Steps",ylab="Frequency",main="Total Steps Histogram")
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+![plot of chunk histogram-2](figure/histogram-2-1.png)
 
 
 ### Calculating mean and median of total daily activity 
@@ -205,7 +185,7 @@ j <- ggplot(intervalactivityDT,aes(interval,steps))
 j +  geom_line(col="blue") + facet_grid(.~daytype) + ggtitle(" Average steps per 5 min time interval- weekday v/s weekends") + xlab("Interval") + ylab("Steps")
 ```
 
-![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
 
  
  

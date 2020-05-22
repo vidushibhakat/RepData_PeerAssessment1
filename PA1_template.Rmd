@@ -10,7 +10,7 @@ head(activitydata)
 ## Step 2   
 ### Histogram of total number of steps taken everyday
 
-```{r,echo=T,cache=T}
+```{r histogram,echo=T,cache=T}
 aggregateactivity <- tapply(activitydata$steps,activitydata$date,sum)
 head(aggregateactivity)
 activitytotal <- data.frame(day.number=1:61,totalactivity=aggregateactivity)
@@ -28,7 +28,7 @@ median(activitytotal$totalactivity,na.rm=T)
 
 ##  Step 4  
 ###  Time series plot of average steps taken 
- ```{r,echo=T,cache=T}
+ ```{r plot,echo=T,cache=T}
  library(ggplot2)
  intervalactivity <- aggregate(steps~interval,data=activitydata, mean, na.action=na.omit)
  h <- ggplot(intervalactivity,aes(interval,steps))
@@ -66,7 +66,7 @@ head(completeactivity)
 
 ## Step 7
 ### Histogram of daily total steps with missing data filled in
-```{r,echo=TRUE,cache=TRUE}
+```{r histogram-2,echo=TRUE,cache=TRUE}
 aggregatecompleteactivity <- tapply(completeactivity$steps,completeactivity$date, sum)
 hist(aggregatecompleteactivity,col="green",breaks=20,xlab="Steps",ylab="Frequency",main="Total Steps Histogram")
 ```
@@ -84,7 +84,7 @@ Imputing missing data have only a little and transcurable impact on the mean and
 ### Panel plot comparing the average number of steps taken per 5-minute interval across weekdays and weekends
 
 1.Creating a new factor variable with two levels weekend and weekday
-```{r,echo=T,cache=T}
+```{r plot-2,echo=T,cache=T}
 completeactivity$realdate <- as.Date(completeactivity$date, format = "%Y-%m-%d")
 completeactivity$weekday <- weekdays(completeactivity$realdate)
 completeactivity$daytype <- ifelse(completeactivity$weekday=='Saturday' | completeactivity$weekday=='Sunday', 'weekend','weekday')
